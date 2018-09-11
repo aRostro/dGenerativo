@@ -111,6 +111,5 @@ boolean Dead() {
   }
    
 void mousePressed() {   /////////////////////CODIGO PARA CAMBIAR CON UN CLICK
- image(fondo,0,0,width,height);
   saveFrame("Fondo###.jpg");
   }
