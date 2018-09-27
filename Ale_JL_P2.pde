@@ -7,10 +7,10 @@ float dz = 0.00005;
 
 float Ax = 250;
 float Ay = 250;
-float cx;
-float dx = 0.04;
-float cy;
-float dy = 0.09;
+float Bx;
+float Cx = 0.04;
+float By;
+float Cy = 0.09;
 
 int contColor;
 
@@ -28,12 +28,12 @@ void draw() {
   life=10.0;
   contColor=(mouseY+1)%256;
   
-  cx+= dx;
-  cy += dy;
-  cz += dz; 
+  Bx+= Cx;
+  By+= Cy;
+  cz+= dz; 
       
-  x = cos(cx*0.0001)* Ax*cos(cz);
-  y = cos(cy*0.01)*Ay*cos(cz); 
+  x = cos(Bx*0.0001)*Ax*cos(cz);
+  y = cos(By*0.01)*Ay*cos(cz); 
  
 //translate(mouseX,mouseY); 
 //rotate(y/10);
@@ -45,16 +45,23 @@ if(click==true){
  fill(255,100);
  ellipse(mouseX, mouseY,1,1);
   
-  stroke(floor(contColor),floor(255),floor(255),life*5); 
+  stroke(floor(contColor),255,255,life*5); 
   strokeWeight(random(0,3));
   noFill();
   bezier(mouseX,mouseY,x,y,x,y,700,700);  //400 400 
+  
+  stroke(255,life*10); 
+  strokeWeight(random(0.01));
+  noFill();
+  bezier(mouseX,mouseY,x,y,x,y,700,700);  //400 400 
+  
+  
   popMatrix();
   }
   else{ noLoop();}
   
- x+=0.001;
- y+=0.001;
+ //x+=0.001;
+ //y+=0.001;
  }
      
 void mouseClicked(){
@@ -83,5 +90,4 @@ boolean Dead() {
       return false;
     }
   }
-  
   
